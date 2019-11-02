@@ -3,7 +3,7 @@
 
 clc;
 clf;
-img= imread('.\chicken.jpg');
+img= imread('chicken.jpg');
 imshow(img);
 a=rgb2gray(img);
  [m, n]=size(a);

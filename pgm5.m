@@ -1,6 +1,6 @@
 % 5.Perform Image compression using JPEG
 
-I1 = imread('C:\mat\chicken.jpg');
+I1 = imread('chicken.jpg');
 I = I1(:,:,1);
 I = im2double(I);
 T = dctmtx(8);
@@ -49,6 +49,11 @@ I4 = blkproc(B2,[8 8],'P1*x*P2',T',T);
 
 
 L(:,:,:)=cat(3,I2, I3, I4);
+imwrite(L,'CompressedImage.jpg');
+L1=imread('CompressedImage.jpg');
+h=fspecial('gaussian');  
+B=imfilter(L1,h);
 
-subplot(1,2,1);imshow(I1);title('Original Image');
-subplot(1,2,2);imshow(L);title('Compressed Image');
+subplot(1,3,1);imshow(I1);title('Original Image');
+subplot(1,3,2);imshow(L);title('Compressed Image');
+subplot(1,3,3);imshow(uint8(B));title('Restored Image');
